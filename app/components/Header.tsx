@@ -73,8 +73,8 @@ export default function Header() {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="md:hidden"
-                    onClick={() => setOpen(!open)}
+                    className="md:hidden z-50"
+                    onClick={() => setOpen(prev => !prev)}
                     aria-label="Toggle menu"
                 >
                     <svg
@@ -82,6 +82,10 @@ export default function Header() {
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            setOpen(prev => !prev);
+                        }}
                     >
                         {open ? (
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -95,37 +99,79 @@ export default function Header() {
             {/* Mobile Fullscreen Nav */}
             <AnimatePresence>
                 {open && (
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 flex flex-col items-center justify-center space-y-5 z-40"
-                    >
-                        {links.map((link) => (
-                            <motion.a
-                                key={link.href}
-                                href={link.href}
-                                onClick={() => handleLinkClick(link.href)}
-                                className={`text-xl py-2 px-6 rounded transition ${
-                                    active === link.href
-                                        ? 'text-indigo-400'
-                                        : 'text-white hover:bg-indigo-600'
-                                }`}
-                                whileHover={{ scale: 1.05 }}
+                    <>
+                        {/* Background Overlay */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 0.5 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="fixed inset-0 bg-black z-40"
+                            onClick={() => setOpen(false)}
+                        />
+
+                        {/* Side Drawer */}
+                        <motion.div
+                            initial={{ x: "100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "100%" }}
+                            transition={{ duration: 0.4, ease: "easeInOut" }}
+                            className="fixed top-0 right-0 h-full w-4/5 sm:w-1/3 bg-white/10 backdrop-blur-xl border-l border-white/20 shadow-2xl z-50 flex flex-col p-6"
+                        >
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setOpen(false)}
+                                className="self-end text-white hover:text-pink-400 transition transform hover:rotate-90"
                             >
-                                {link.name}
-                            </motion.a>
-                        ))}
-                        <div className="flex space-x-6 pt-6">
-                            <a href="https://www.linkedin.com/in/devsazidhasan" target="_blank" rel="noopener noreferrer">
-                                <FaLinkedin className="text-2xl hover:text-blue-500 transition" />
-                            </a>
-                            <a href="https://www.facebook.com/devsazidhasan" target="_blank" rel="noopener noreferrer">
-                                <FaFacebookSquare className="text-2xl hover:text-blue-600 transition" />
-                            </a>
-                        </div>
-                    </motion.div>
+                                ✕
+                            </button>
+
+                            {/* Menu Links */}
+                            <div className="mt-8 space-y-6">
+                                {links.map((link, index) => (
+                                    <motion.a
+                                        key={link.href}
+                                        href={link.href}
+                                        onClick={() => handleLinkClick(link.href)}
+                                        className={`block text-lg font-medium tracking-wide px-4 py-2 rounded-lg transition-all duration-300 ${
+                                            active === link.href
+                                                ? "bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg"
+                                                : "text-white hover:text-pink-400"
+                                        }`}
+                                        whileHover={{ scale: 1.05 }}
+                                        initial={{ opacity: 0, x: 30 }}
+                                        animate={{ opacity: 1, x: 0 }}
+                                        transition={{ delay: index * 0.08 }}
+                                    >
+                                        {link.name}
+                                    </motion.a>
+                                ))}
+                            </div>
+
+                            {/* Divider */}
+                            <div className="mt-6 border-t border-white/20"></div>
+
+                            {/* Social Links */}
+                            <div className="mt-auto flex space-x-6 pt-6">
+                                <a
+                                    href="https://www.linkedin.com/in/devsazidhasan"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-white hover:text-blue-400 transition transform hover:scale-110"
+                                >
+                                    <FaLinkedin className="text-2xl" />
+                                </a>
+                                <a
+                                    href="https://www.facebook.com/devsazidhasan"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="text-white hover:text-blue-500 transition transform hover:scale-110"
+                                >
+                                    <FaFacebookSquare className="text-2xl" />
+                                </a>
+                            </div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </header>

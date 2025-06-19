@@ -132,8 +132,8 @@ export default function Contact() {
                 >
                     <p className="flex items-center justify-center gap-3 text-indigo-400">
                         <FiMail className="inline-block" />{' '}
-                        <a href="mailto:sazid3993@gmail.com" className="underline hover:text-white transition">
-                            sazid3993@gmail.com
+                        <a href="mailto:devsazidhasan@gmail.com" className="underline hover:text-white transition">
+                            devsazidhasan@gmail.com
                         </a>
                     </p>
                     <p className="flex items-center justify-center gap-3">

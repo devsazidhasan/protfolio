@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const projects = [
     {
-        title: 'Student Management System',
+        title: 'School Management System',
         description: 'Role-based access web app built with Flask & SQLAlchemy.',
         image: '/IMG_20231210_175716.jpg',
         link: '#',
@@ -29,13 +29,13 @@ const projects = [
     {
         title: 'Local harvest',
         description: 'Simple task management app using React and localStorage.',
-        image: '/images/task-tracker.jpg',
+        image: 'localharvest.jpeg',
         link: 'https://bdlocalharvest.netlify.app/',
     },
     {
         title: 'Notepad',
         description: 'RESTful blog API built with Django and DRF.',
-        image: '/images/blog-api.jpg',
+        image: '/notepad.jpeg',
         link: '#',
     },
 ];
