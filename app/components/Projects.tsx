@@ -12,13 +12,13 @@ const projects = [
         title: 'Portfolio Website',
         description: 'A sleek personal portfolio built with Next.js and Tailwind.',
         image: '/protfolio.jpeg',
-        link: '#',
+        link: 'https://sazidhasan.netlify.app/',
     },
     {
         title: 'Medicine Inventory System',
         description: 'Inventory tracking web app for pharmacies with Next.js.',
         image: '/medicine.jpeg',
-        link: '#',
+        link: 'https://bubtmedicine.netlify.app/',
     },
     {
         title: 'Weather App',
@@ -27,13 +27,13 @@ const projects = [
         link: '#',
     },
     {
-        title: 'Task Tracker',
+        title: 'Local harvest',
         description: 'Simple task management app using React and localStorage.',
         image: '/images/task-tracker.jpg',
-        link: '#',
+        link: 'https://bdlocalharvest.netlify.app/',
     },
     {
-        title: 'Blog API',
+        title: 'Notepad',
         description: 'RESTful blog API built with Django and DRF.',
         image: '/images/blog-api.jpg',
         link: '#',

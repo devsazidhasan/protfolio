@@ -40,7 +40,7 @@ export default function Header() {
                         rel="noopener noreferrer"
                     >
                         <h1 className="text-xl font-bold cursor-pointer hover:text-blue-500 transition">
-                            devsazidhasan
+                            Sazid Hasan
                         </h1>
                     </a>
                 </div>
